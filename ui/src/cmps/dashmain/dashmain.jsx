@@ -130,6 +130,7 @@ class dashmain extends Component {
             showPaginationBottom={false}
             style={{ height: 'inherit' }}
             minRows={0}
+            defaultPageSize={10000}
           />
         </div>
       </div>

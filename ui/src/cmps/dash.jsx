@@ -5,6 +5,7 @@ import { PopupActions, DialogType, AnimationType } from "react-custom-popup";
 
 import actions from '../actions/mainaction'
 import Withdraw from './withdraw/withdraw'
+import Deposite from './deposite/deposite';
 
 
 import User from '../images/user.png';
@@ -12,7 +13,11 @@ import Settings from '../images/settings.png'
 import DashBord from '../images/dashboard.png'
 import DropDown from '../common/dropdown'
 import Logout from '../images/logout.png'
+import WithdrawPic from '../images/atm-machine.png'
+import DeposotePic from '../images/deposit.png'
+import FundsPic from '../images/money.png'
 import DashMain from './dashmain/dashmain'
+
 import './dash.css'
 var loginpol = ''
 
@@ -35,6 +40,7 @@ class Dash extends Component {
     }, 1000 * 5);
     this.getaccountDetails('firestTime')
     this.getUserDetails()
+    this.props.setSummary('selectedTab', 'dashboard')
   }
 
   componentWillUnmount() {
@@ -195,6 +201,7 @@ class Dash extends Component {
 
     let cmp  = <DashMain />
     if(selectedTab && selectedTab === 'withdraw') cmp = <Withdraw />
+    else if(selectedTab && selectedTab === 'deposite') cmp = <Deposite />
 
     return (
       <div className='dash-board'>
@@ -244,7 +251,7 @@ class Dash extends Component {
                   </div>
                   <div onClick={() => this.props.setSummary('selectedTab', 'withdraw')} className={`each-tab ${selectedTab === 'withdraw' ? 'selected-tab' : ""}`} style={{ display: 'flex', marginTop: '30px', cursor: 'pointer' }}>
                     <div style={{ marginRight: '10px' }}>
-                      <img style={{ height: '30px', width: '30px', marginLeft: '30px' }} src={DashBord} alt="DashBord" />
+                      <img style={{ height: '30px', width: '30px', marginLeft: '30px' }} src={WithdrawPic} alt="DashBord" />
                     </div>
                     <div>
                       <h4 style={{ margin: 'unset', marginBottom: '10px' }}>Withdraw</h4>
@@ -252,7 +259,7 @@ class Dash extends Component {
                   </div>
                   <div onClick={() => this.props.setSummary('selectedTab', 'deposite')} className={`each-tab ${selectedTab === 'deposite' ? 'selected-tab' : ""}`} style={{ display: 'flex', marginTop: '30px', cursor: 'pointer' }}>
                     <div style={{ marginRight: '10px' }}>
-                      <img style={{ height: '30px', width: '30px', marginLeft: '30px' }} src={DashBord} alt="DashBord" />
+                      <img style={{ height: '30px', width: '30px', marginLeft: '30px' }} src={DeposotePic} alt="DashBord" />
                     </div>
                     <div>
                       <h4 style={{ margin: 'unset', marginBottom: '10px' }}>Deposite</h4>
@@ -260,10 +267,10 @@ class Dash extends Component {
                   </div>
                   <div onClick={() => this.props.setSummary('selectedTab', 'transfer')} className={`each-tab ${selectedTab === 'transfer' ? 'selected-tab' : ""}`} style={{ display: 'flex', marginTop: '30px', cursor: 'pointer' }}>
                     <div style={{ marginRight: '10px' }}>
-                      <img style={{ height: '30px', width: '30px', marginLeft: '30px' }} src={DashBord} alt="DashBord" />
+                      <img style={{ height: '30px', width: '30px', marginLeft: '30px' }} src={FundsPic} alt="DashBord" />
                     </div>
                     <div>
-                      <h4 style={{ margin: 'unset', marginBottom: '10px' }}>Transfer</h4>
+                      <h4 style={{ margin: 'unset', marginBottom: '10px' }}>Funds Transfer</h4>
                     </div>
                   </div>
                 </div>
