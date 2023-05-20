@@ -1,0 +1,52 @@
+.dash-board {
+    /* background-color: #E0F5F5; */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #E0F5F5;
+    height: 10vh;
+    align-items: center;
+    /* background-color: #00A7E1; */
+}
+
+.header-right {
+    display: flex;
+}
+
+.dash-body {}
+
+.side-panle {
+
+    width: 20%;
+    /* background-color:#C8F0EE; */
+    height: 90vh;
+    background-color: #E0F5F5;
+    min-width: 180px;
+}
+
+.each-tab {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.each-tab:hover {
+    background-color: #B9DEDE;
+}
+
+.selected-tab {
+    background-color: #A0EAEA;
+}
+
+.dash-body {
+    display: flex;
+
+}
+
+.right-side-panel {
+    width: 80%;
+    height: 90vh;
+}

@@ -1,0 +1,31 @@
+.dash-main {
+    
+}
+
+.balance-tab {
+    height: 200px;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    min-width: 155px;
+}
+
+.upper-side {
+    display: flex;
+    height: 35vh;
+}
+
+.lower-side {
+    height: 54vh;
+
+}
+
+.ReactTable .rt-tbody .rt-td {
+    border-right: 1px solid rgba(0, 0, 0, 0.02);
+    margin-left: 10px;
+}
+
+.ReactTable .rt-tbody .rt-tr-group{
+    height: 40px;
+    max-height: 30px;
+}

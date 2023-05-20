@@ -1,0 +1,40 @@
+.home {
+    height: 100vh;
+    background-color: #F3F9F9;
+}
+
+.css-elapsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.css-hover:hover {
+    background-color: #B9DEDE;
+    cursor: pointer;
+}
+
+.css-pointer {
+    cursor: pointer;
+}
+
+.css-disbale {
+    opacity: 0.5;
+    position: unset;
+}
+
+.css-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-btn-big {
+    width: 210px;
+    height: 32px;
+}
+
+.css-btn-big:hover{
+    background-color: #B9DEDE;
+    cursor: pointer;
+}

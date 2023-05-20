@@ -1,0 +1,14 @@
+usr: SanVish
+pwd: SanVish@123
+
+
+user 1:
+{
+    "firstname": "vishwa",
+    "lastname": "sk",
+    "username":"vishwa",
+    "password": "Vishwa@123",
+    "emaid":"vk@gmail.com",
+    "phone":9739420831,
+    "hint": "vishwa"
+}

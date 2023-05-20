@@ -1,0 +1,41 @@
+.reg{
+    background: linear-gradient(90deg, #00ffcc 47%, white 5%);
+    height: 100vh;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+}
+
+.reg-header{
+    display: block;
+    justify-self: center !important;
+}
+.reg-header-h1{
+    margin: unset;
+}
+.reg-panel{
+    /* background-color: red; */
+    display: flex;
+    height: 400px;
+    width: 800px;
+    min-width: 500px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(90deg, #00ffcc 46%, white 5%);
+}
+
+.bank-icon{
+    height: 60px;
+    mix-blend-mode: darken;
+    margin-top: 10px;
+}
+
+.ipt{
+    width: 220px;
+    height: 20px;
+}
+.reg-btn{
+    height: 32px;
+    width: 150px;
+    cursor: pointer;
+}
