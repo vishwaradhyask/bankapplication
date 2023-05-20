@@ -38,3 +38,22 @@
     background-color: #B9DEDE;
     cursor: pointer;
 }
+
+
+.css-warning-notes{
+    color: red;
+}
+
+.css-normal-notes{
+    color: green;
+}
+
+.ipt{
+    width: 220px;
+    height: 20px;
+}
+
+.css-disable{
+    opacity: 0.5;
+    pointer-events: none;
+}

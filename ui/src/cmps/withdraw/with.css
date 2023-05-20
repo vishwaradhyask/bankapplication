@@ -1,9 +1,14 @@
-.withdraw{
+.withdraw {
     height: inherit;
 }
 
-.withdraw-body{
+.withdraw-body {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     height: 400px;
     width: 500px;
+}
+
+.with-header {
+    display: flex;
+    justify-content: center;
 }
