@@ -19,7 +19,7 @@ class UserDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsersDetails
         fields = ['firstname', 'lastname', 'username',
-                  'password', 'emaid', 'phone', 'hint',]
+                  'password', 'emaid', 'phone', 'hint']
 
 
 
@@ -27,4 +27,5 @@ class SavingAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavingAccount
         fields = ['firstname', 'lastname', 'username',
-                  'balance', 'emaid', 'phone', 'transaction']
+                  'balance', 'emaid', 'phone', 'transaction', 'accountnumber']
+        

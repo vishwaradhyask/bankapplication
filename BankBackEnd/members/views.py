@@ -17,6 +17,7 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from .models import UsersDetails, SavingAccount
 from django.core import serializers
+from django.db.models import Max
 
 class RegisterUser(APIView):
     def post(self, request):
@@ -93,6 +94,24 @@ def checkUserPresent(user):
         return Response({'status': 403, 'message': 'user is not registration:{}'.format(E)}, status=500)
 
 
+def getAccountNumber():
+    print("insideacc$$$$$$$$$$$$$$")
+    data = list(SavingAccount.objects.all())
+    print('data: ', data,len(data))
+    print('data: ', type(data))
+    if( len(data) == 0):
+        return 5204810001
+
+    else:
+        print("entered")
+        data= SavingAccount.objects.values('accountnumber').annotate(max_accountnumber=Max('accountnumber'))
+    
+        print("max",data)   
+        # lastData = data[len(data)-1].
+        # print('last data: ', lastData.accountnumber)
+        print('test: ', data[0]['max_accountnumber'], type(data[0]['max_accountnumber']))
+        return data[0]['max_accountnumber'] + 1
+
 class SavingAccountView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -102,7 +121,12 @@ class SavingAccountView(APIView):
             user = request.user.username
             checkUserPresent(user)
             data = json.loads(request.body)
+            acc =  getAccountNumber()
+            print('acc: ', acc)
+            data['accountnumber'] = acc
+            print('Data: ', data)
             ser = SavingAccountSerializer(data=data)
+            
             print("ser:",ser)
             if not ser.is_valid():
                 print("error", ser.error_messages, ser.errors)

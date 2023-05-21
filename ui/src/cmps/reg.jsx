@@ -171,7 +171,7 @@ class Reg extends Component {
       })
       return
     }
-
+    this.props.setSummary('showLoading', true)
     axios.post(`http://localhost:9990/register/`, {
       "firstname": fn,
       "lastname": ln,

@@ -17,11 +17,19 @@ class UsersDetails(models.Model):
 class SavingAccount(models.Model):
     firstname = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
+    accountnumber=models.IntegerField(max_length=10)
     username = models.CharField(max_length=255, primary_key=True)
     emaid = models.EmailField()
     phone = models.CharField(max_length=10)
     balance = models.FloatField(max_length=255)
     transaction =  models.JSONField()
 
+    
+
+
 def __str__(self):
-        return 'first name=%r lastname=%r username=%r emaid=%r phone=%r balance=%r' % (self.firstname, self.lastname, self.username, self.emaid, self.phone, self.balance)
+        return 'first name=%r lastname=%r username=%r accountnumber=% emaid=%r phone=%r balance=%r' % (self.firstname, self.lastname,self.accountnumber, self.username, self.emaid, self.phone, self.balance)
+
+
+
+
