@@ -6,6 +6,7 @@ import { PopupActions, DialogType, AnimationType } from "react-custom-popup";
 import actions from '../actions/mainaction'
 import Withdraw from './withdraw/withdraw'
 import Deposite from './deposite/deposite';
+import Funds from './fundtransfer/funds';
 
 
 import User from '../images/user.png';
@@ -202,6 +203,7 @@ class Dash extends Component {
     let cmp  = <DashMain />
     if(selectedTab && selectedTab === 'withdraw') cmp = <Withdraw />
     else if(selectedTab && selectedTab === 'deposite') cmp = <Deposite />
+    else if(selectedTab && selectedTab === 'transfer') cmp = <Funds />
 
     return (
       <div className='dash-board'>
