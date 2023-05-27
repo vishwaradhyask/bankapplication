@@ -66,7 +66,7 @@ class deposite extends Component {
     const { login, cmptype, token, dashboard, accountDetails } = summary
     const { balance, transaction } = accountDetails
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/deposite_saving_account/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/deposite_saving_account/`, {
       'balance': parseFloat(amount)
     }, {
       headers: {

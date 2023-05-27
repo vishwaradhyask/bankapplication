@@ -106,7 +106,7 @@ class funds extends Component {
       return
     }
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/validate_acc/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/validate_acc/`, {
       'account_no': parseInt(this.state.accno)
     }, {
       headers: {
@@ -148,7 +148,7 @@ class funds extends Component {
       return
     }
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/transaction/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/transaction/`, {
       'account_no': parseInt(this.state.accno),
       "amnt": parseInt(this.state.amount)
     }, {

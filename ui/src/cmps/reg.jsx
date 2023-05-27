@@ -30,7 +30,7 @@ class Reg extends Component {
   }
 
   handlelog = (crf) => {
-    axios.post(`http://localhost:9990/api-token-auth/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/api-token-auth/`, {
       "username": un,
       "password": pw
     })
@@ -79,7 +79,7 @@ class Reg extends Component {
     }
 
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/api-token-auth/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/api-token-auth/`, {
       "username": un,
       "password": pw
     })
@@ -187,7 +187,7 @@ class Reg extends Component {
       return
     }
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/register/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/register/`, {
       "firstname": fn,
       "lastname": ln,
       "username": run,
@@ -278,7 +278,7 @@ class Reg extends Component {
       return
     }
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/forgot_pwd/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/forgot_pwd/`, {
       "username": fun,
       "password": fpw,
       "hint": fht

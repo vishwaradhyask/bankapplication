@@ -116,7 +116,7 @@ class profile extends Component {
     }
 
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/uodate_profile/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/uodate_profile/`, {
       fn,
       ln,
       ei,
@@ -153,7 +153,7 @@ class profile extends Component {
     const { main } = this.props
     const { summary } = main
     const { login, cmptype, token } = summary
-    axios.get(`http://localhost:9990/get_user_details/`, {
+    axios.get(`http://sanvish.pythonanywhere.com/get_user_details/`, {
       headers: {
         'Authorization': `Token ${token}`
       }

@@ -68,7 +68,7 @@ class withdraw extends Component {
     const { login, cmptype, token, dashboard, accountDetails } = summary
     const { balance, transaction } = accountDetails
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/withdraw_saving_account/`, {
+    axios.post(`http://sanvish.pythonanywhere.com/withdraw_saving_account/`, {
       'amount': parseFloat(amount)
     }, {
       headers: {

@@ -55,7 +55,7 @@ class Dash extends Component {
     const { main } = this.props
     const { summary } = main
     const { login, cmptype, token } = summary
-    axios.get(`http://localhost:9990/get_user_details/`, {
+    axios.get(`http://sanvish.pythonanywhere.com/get_user_details/`, {
       headers: {
         'Authorization': `Token ${token}`
       }
@@ -79,7 +79,7 @@ class Dash extends Component {
     const { summary } = main
     const { login, cmptype, token, dashboard, accountDetails } = summary
     if (type && type === 'firestTime') this.props.setSummary('showLoading', true)
-    axios.get(`http://localhost:9990/fetch_saving_account`, {
+    axios.get(`http://sanvish.pythonanywhere.com/fetch_saving_account`, {
       headers: {
         'Authorization': `Token ${token}`
       }
@@ -100,7 +100,7 @@ class Dash extends Component {
     const { summary } = main
     const { login, cmptype, token, selectedTab } = summary
     console.log('timer called', token)
-    axios.post(`http://localhost:9990/token_expired/`, {}, {
+    axios.post(`http://sanvish.pythonanywhere.com/token_expired/`, {}, {
       headers: {
         'Authorization': `Token ${token}`
       }
@@ -140,7 +140,7 @@ class Dash extends Component {
     }
     console.log('payload:', payload)
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/creaet_saving_account/`, payload, {
+    axios.post(`http://sanvish.pythonanywhere.com/creaet_saving_account/`, payload, {
       headers: {
         'Authorization': `Token ${token}`
       }
@@ -172,7 +172,7 @@ class Dash extends Component {
     } = summary
     const { firstname, lastname, username, emailid, phone, hint } = userDetails
     this.props.setSummary('showLoading', true)
-    axios.post(`http://localhost:9990/Delete_relationship/`, {}, {
+    axios.post(`http://sanvish.pythonanywhere.com/Delete_relationship/`, {}, {
       headers: {
         'Authorization': `Token ${token}`
       }
