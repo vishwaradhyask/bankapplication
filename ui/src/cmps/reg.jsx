@@ -30,6 +30,23 @@ class Reg extends Component {
   }
 
   handlelog = (crf) => {
+
+  }
+
+  handleLogin = () => {
+    const { un, pw } = this.state
+    if (un === '' || pw === '') {
+      PopupActions.showAlert(
+        {
+          title: "Log In",
+          type: DialogType.WARNING,
+          text: "username or password can not empty!",
+          animationType: AnimationType.ZOOM_IN
+        }
+      )
+      return
+    }
+    this.props.setSummary('showLoading', true)
     axios.post(`http://sanvish.pythonanywhere.com/api-token-auth/`, {
       "username": un,
       "password": pw
@@ -37,7 +54,7 @@ class Reg extends Component {
       .then(res => {
         const animals = res.data;
         console.log(res)
-        // this.props.setSummary('showLoading', false)
+        this.props.setSummary('showLoading', false)
         if (res.status === 200) {
           this.props.setSummary('login', true)
           this.props.setSummary('token', res.data.token)
@@ -62,34 +79,7 @@ class Reg extends Component {
           animationType: AnimationType.ZOOM_IN
         })
       })
-  }
 
-  handleLogin = () => {
-    const { un, pw } = this.state
-    if (un === '' || pw === '') {
-      PopupActions.showAlert(
-        {
-          title: "Log In",
-          type: DialogType.WARNING,
-          text: "username or password can not empty!",
-          animationType: AnimationType.ZOOM_IN
-        }
-      )
-      return
-    }
-
-    this.props.setSummary('showLoading', true)
-    axios.post(`http://sanvish.pythonanywhere.com/api-token-auth/`, {
-      "username": un,
-      "password": pw
-    })
-      .then(res => {
-        const animals = res.data;
-        console.log(res)
-        
-      }).catch(res => {
-        console.log('cathc:', res)
-      })
   }
 
   handleonchnage = (e, type) => {
@@ -236,7 +226,7 @@ class Reg extends Component {
   }
 
   handleResetPwd = () => {
-    const { fun, fht, fpw, fcpw} = this.state
+    const { fun, fht, fpw, fcpw } = this.state
     let t = ''
     if (fpw === '') t = 'Pasword Cant empty!'
     if (fht === '') t = 'Hint Cant empty!'
@@ -265,7 +255,7 @@ class Reg extends Component {
       })
       return
     }
-    if(fpw !== fcpw){
+    if (fpw !== fcpw) {
       PopupActions.showAlert({
         title: "Invalid Password",
         type: DialogType.WARNING,
@@ -301,8 +291,8 @@ class Reg extends Component {
             type: 'login',
             fun: '',
             fpw: '',
-            fht:'',
-            fcpw:'',
+            fht: '',
+            fcpw: '',
           })
         }
       }).catch(res => {
@@ -310,7 +300,7 @@ class Reg extends Component {
         this.props.setSummary('showLoading', false)
         let msg = "Something Went Wrong!"
         if (res.response.status === 404) msg = 'provided wrong hint answare!'
-        else if(res.response.status === 403) msg = 'Usern not found!'
+        else if (res.response.status === 403) msg = 'Usern not found!'
         PopupActions.showAlert({
           title: "Log In",
           type: DialogType.WARNING,
