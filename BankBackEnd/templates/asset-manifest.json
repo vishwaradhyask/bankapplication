@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "./static/css/main.073c9b0a.css",
-    "main.js": "./static/js/main.0b4dde42.js",
+    "main.css": "./static/css/main.8e57a138.css",
+    "main.js": "./static/js/main.f3520cea.js",
     "static/js/787.349b0e60.chunk.js": "./static/js/787.349b0e60.chunk.js",
-    "static/media/axios.cjs": "./static/media/axios.767cbb9196d492ec45d3.cjs",
+    "static/media/deposit.png": "./static/media/deposit.0b8ceb4d8a81506d18dc.png",
+    "static/media/settings.png": "./static/media/settings.1d52ed2b02c58ec05cfd.png",
+    "static/media/bank_icon.jpg": "./static/media/bank_icon.f6556a251f2889679310.jpg",
+    "static/media/atm-machine.png": "./static/media/atm-machine.594b36dbb9866d264479.png",
+    "static/media/money.png": "./static/media/money.42a686b291c4e163cb78.png",
+    "static/media/user.png": "./static/media/user.45a0af68515332b42be9.png",
+    "static/media/dashboard.png": "./static/media/dashboard.57005cad6e7940897e79.png",
+    "static/media/logout.png": "./static/media/logout.a78baedd6fc26d3affb0.png",
     "static/media/logo.svg": "./static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "./index.html",
-    "main.073c9b0a.css.map": "./static/css/main.073c9b0a.css.map",
-    "main.0b4dde42.js.map": "./static/js/main.0b4dde42.js.map",
+    "main.8e57a138.css.map": "./static/css/main.8e57a138.css.map",
+    "main.f3520cea.js.map": "./static/js/main.f3520cea.js.map",
     "787.349b0e60.chunk.js.map": "./static/js/787.349b0e60.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.0b4dde42.js"
+    "static/css/main.8e57a138.css",
+    "static/js/main.f3520cea.js"
   ]
 }
