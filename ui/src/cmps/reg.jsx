@@ -29,20 +29,7 @@ class Reg extends Component {
     }
   }
 
-  handleLogin = () => {
-    const { un, pw } = this.state
-    if (un === '' || pw === '') {
-      PopupActions.showAlert(
-        {
-          title: "Log In",
-          type: DialogType.WARNING,
-          text: "username or password can not empty!",
-          animationType: AnimationType.ZOOM_IN
-        }
-      )
-      return
-    }
-    this.props.setSummary('showLoading', true)
+  handlelog = (crf) => {
     axios.post(`http://localhost:9990/api-token-auth/`, {
       "username": un,
       "password": pw
@@ -74,6 +61,34 @@ class Reg extends Component {
           text: msg,
           animationType: AnimationType.ZOOM_IN
         })
+      })
+  }
+
+  handleLogin = () => {
+    const { un, pw } = this.state
+    if (un === '' || pw === '') {
+      PopupActions.showAlert(
+        {
+          title: "Log In",
+          type: DialogType.WARNING,
+          text: "username or password can not empty!",
+          animationType: AnimationType.ZOOM_IN
+        }
+      )
+      return
+    }
+
+    this.props.setSummary('showLoading', true)
+    axios.post(`http://localhost:9990/api-token-auth/`, {
+      "username": un,
+      "password": pw
+    })
+      .then(res => {
+        const animals = res.data;
+        console.log(res)
+        
+      }).catch(res => {
+        console.log('cathc:', res)
       })
   }
 
