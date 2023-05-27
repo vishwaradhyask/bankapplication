@@ -19,6 +19,7 @@
     "react-scripts": "5.0.1",
     "react-table": "^6.10.0",
     "react-table-hoc-fixed-columns": "^2.3.0",
+    "react-tooltip": "^5.13.1",
     "redux": "^4.2.1",
     "web-vitals": "^2.1.4"
   },

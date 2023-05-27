@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+
 import actions from '../../actions/mainaction'
 import axios from 'axios';
 import { PopupActions, DialogType, AnimationType } from "react-custom-popup";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-
 
 import Rupee from '../../images/rupee.png'
 import './dashmain.css'
@@ -15,7 +17,7 @@ class dashmain extends Component {
     const { main } = this.props
     const { summary } = main
     const { login, cmptype, token, selectedTab, userDetails, accountDetails } = summary
-    const { balance, transaction } = accountDetails
+    const { balance, transaction, accountnumber } = accountDetails
     const data = [{
       name: 'Ayaan',
       age: 26
@@ -58,26 +60,74 @@ class dashmain extends Component {
       Header: 'Sl No',
       minWidth: 20,
       accessor: 'Sl No',
+      Cell: (props) => {
+        return (
+          <div data-tooltip-id={props.value} data-tooltip-content={props.value}>
+            <div >{props.value}</div>
+            <Tooltip id={props.value} />
+          </div>
+        )
+      },
     }, {
       Header: 'Date',
       accessor: 'Date',
       minWidth: 100,
+      Cell: (props) => {
+        return (
+          <div data-tooltip-id={props.value} data-tooltip-content={props.value}>
+            <div >{props.value}</div>
+            <Tooltip id={props.value} />
+          </div>
+        )
+      },
     }, {
       Header: 'Description',
       accessor: 'Description',
       minWidth: 150,
+      Cell: (props) => {
+        return (
+          <div data-tooltip-id={props.value} data-tooltip-content={props.value}>
+            <div >{props.value}</div>
+            <Tooltip id={props.value} />
+          </div>
+        )
+      },
     }, {
       Header: 'Deducted',
       accessor: 'Deducted',
       minWidth: 50,
+      Cell: (props) => {
+        return (
+          <div data-tooltip-id={props.value} data-tooltip-content={props.value}>
+            <div >{props.value}</div>
+            <Tooltip id={props.value} />
+          </div>
+        )
+      },
     }, {
       Header: 'Credited',
       accessor: 'Credited',
       minWidth: 50,
+      Cell: (props) => {
+        return (
+          <div data-tooltip-id={props.value} data-tooltip-content={props.value}>
+            <div >{props.value}</div>
+            <Tooltip id={props.value} />
+          </div>
+        )
+      },
     }, {
       Header: 'Balance',
       accessor: 'Balance',
       minWidth: 50,
+      Cell: (props) => {
+        return (
+          <div data-tooltip-id={props.value} data-tooltip-content={props.value}>
+            <div >{props.value}</div>
+            <Tooltip id={props.value} />
+          </div>
+        )
+      },
     }]
 
     // let dableData = []
@@ -119,6 +169,16 @@ class dashmain extends Component {
               </li>
               <li>
                 Hope you like it!, Happy Banking
+              </li>
+              <li>
+                <div style={{ display: 'flex' }}>
+                  <div style={{ marginRight: '5px' }}>
+                    Your ACC No:
+                  </div>
+                  <div style={{ fontWeight: 'bold' }}>
+                    {accountnumber}
+                  </div>
+                </div>
               </li>
             </ul>
           </div>

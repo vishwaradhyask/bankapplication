@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios';
 import { PopupActions, DialogType, AnimationType } from "react-custom-popup";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
 
 import actions from '../actions/mainaction'
 import Withdraw from './withdraw/withdraw'
 import Deposite from './deposite/deposite';
-import Funds from './fundtransfer/funds';
-
+import FundTransfer from './fundTransfer/funds'
+import Profile from './profile/profile';
 
 import User from '../images/user.png';
 import Settings from '../images/settings.png'
@@ -27,7 +29,8 @@ class Dash extends Component {
     super(props)
 
     this.state = {
-      showProfileDropDown: false
+      showProfileDropDown: false,
+      settingDrop: false
     }
   }
 
@@ -133,7 +136,7 @@ class Dash extends Component {
       "phone": phone,
       // "hint": hint,
       "balance": 0,
-      "transaction":[]
+      "transaction": []
     }
     console.log('payload:', payload)
     this.props.setSummary('showLoading', true)
@@ -162,11 +165,39 @@ class Dash extends Component {
     })
   }
 
+  handleDeleteAcc = () => {
+    const { main } = this.props
+    const { summary } = main
+    const { login, cmptype, token, dashboard, userDetails
+    } = summary
+    const { firstname, lastname, username, emailid, phone, hint } = userDetails
+    this.props.setSummary('showLoading', true)
+    axios.post(`http://localhost:9990/Delete_relationship/`, {}, {
+      headers: {
+        'Authorization': `Token ${token}`
+      }
+    }).then(res => {
+      const animals = res.data;
+      console.log("createAccount:", res)
+      this.props.setSummary('showLoading', false)
+      window.location.reload()
+    }).catch(res => {
+      this.props.setSummary('showLoading', false)
+      console.log("createAccount error:", res)
+      PopupActions.showAlert({
+        title: "Bank",
+        type: DialogType.WARNING,
+        text: 'Somthing went wrong please try again',
+        animationType: AnimationType.ZOOM_IN
+      })
+    })
+  }
+
   render() {
     console.log('DAsh props: ', this.props)
     const { main } = this.props
     const { summary } = main
-    const { showProfileDropDown } = this.state
+    const { showProfileDropDown, settingDrop } = this.state
     const { login, cmptype, token, selectedTab, userDetails, accountDetails } = summary
     let name = userDetails?.firstname ? userDetails.firstname : ''
     const options = [
@@ -176,35 +207,53 @@ class Dash extends Component {
     let dropdowndata = [
       {
         'name': (
-          <div style={{ display: 'flex' }} onClick={() => window.location.reload()}>
+          <div data-tooltip-id='Log out' data-tooltip-content='Log out' style={{ display: 'flex' }} onClick={() => window.location.reload()}>
             <div>
               <img style={{ height: '20px', width: '20px', marginRight: '5px' }} src={Logout} alt="Logout" />
             </div>
             <div>
               <h4 style={{ margin: 'unset' }} >Log out</h4>
             </div>
+            <Tooltip id='Log out' />
           </div>
         )
       },
       {
         'name': (
-          <div style={{ display: 'flex' }}>
+          <div data-tooltip-id='Profile Settings' data-tooltip-content='Profile Settings' style={{ display: 'flex' }} onClick={() => this.props.setSummary('selectedTab', 'profile')} >
             <div>
               <img style={{ height: '20px', width: '20px', marginRight: '5px' }} src={Logout} alt="Logout" />
             </div>
             <div>
               <h4 style={{ margin: 'unset' }} >Profile Settings</h4>
             </div>
+            <Tooltip id='Profile Settings' />
           </div>
         )
       }
     ]
 
-    let cmp  = <DashMain />
-    if(selectedTab && selectedTab === 'withdraw') cmp = <Withdraw />
-    else if(selectedTab && selectedTab === 'deposite') cmp = <Deposite />
-    else if(selectedTab && selectedTab === 'transfer') cmp = <Funds />
+    let settingdropdowndata = [
+      {
+        'name': (
+          <div data-tooltip-id='Delete Relationship With Bank' data-tooltip-content='Delete Relationship With Bank' style={{ display: 'flex' }} onClick={this.handleDeleteAcc}>
+            <div>
+              <img style={{ height: '20px', width: '20px', marginRight: '5px' }} src={Logout} alt="Logout" />
+            </div>
+            <div>
+              <h4 style={{ margin: 'unset' }} >Delete Relationship With Bank</h4>
+            </div>
+            <Tooltip id='Delete Relationship With Bank' />
+          </div>
+        )
+      }
+    ]
 
+    let cmp = <DashMain />
+    if (selectedTab && selectedTab === 'withdraw') cmp = <Withdraw />
+    else if (selectedTab && selectedTab === 'deposite') cmp = <Deposite />
+    else if (selectedTab && selectedTab === 'transfer') cmp = <FundTransfer />
+    else if (selectedTab && selectedTab === 'profile') cmp = <Profile />
     return (
       <div className='dash-board'>
         <div className='header'>
@@ -223,8 +272,13 @@ class Dash extends Component {
                 ) : null}
               </div>
             </div>
-            <div>
+            <div className='css-pointer' onClick={() => { this.setState({ settingDrop: !settingDrop }) }}>
               <img style={{ height: '25px', width: '25px', margin: '10px 10px 0px 0px' }} src={Settings} alt="Settings" />
+              <div>
+                {settingDrop ? (
+                  <DropDown closeSidePanel={() => this.setState({ settingDrop: false })} data={settingdropdowndata} />
+                ) : null}
+              </div>
             </div>
           </div>
         </div >

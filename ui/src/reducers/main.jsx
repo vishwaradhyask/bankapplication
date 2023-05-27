@@ -9,7 +9,8 @@ const eventDefault = {
     cmptype: '',
     accountDetails: false,
     userDetails: '',
-    selectedTab: 'dashboard'
+    selectedTab: 'dashboard',
+    transAccDetails: ''
   },
 }
 
@@ -24,6 +25,7 @@ function setBackupSummary(state, action) {
     case 'userDetails':
     case 'selectedTab':
     case 'accountDetails':
+    case 'transAccDetails':
       return Object.assign({}, state, {
         summary: { ...summary, [action.key]: action.value },
       })
